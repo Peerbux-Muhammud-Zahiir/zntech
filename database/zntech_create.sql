@@ -80,3 +80,13 @@ CREATE TABLE `cart` (
     FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES `product`(product_id) ON DELETE CASCADE
 );
+
+-- Payment Table
+CREATE TABLE `payment` (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    payment_method ENUM('debit', 'credit', 'cash', 'pay_on_delivery') NOT NULL,
+    payment_status ENUM('pending', 'completed', 'failed', 'refunded') NOT NULL DEFAULT 'pending',
+    order_id INT NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES `order`(order_id) ON DELETE CASCADE
+);

@@ -60,8 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
 </head>
-<body>
+<body class="bg-light">
 
     <div class="container">
         <div class="row justify-content-center mt-5">

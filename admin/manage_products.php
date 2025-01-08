@@ -39,8 +39,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Products</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
 </head>
 <body>
 
@@ -56,12 +58,12 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
         <!-- Add Product Button -->
         <div class="text-right mb-3">
-            <a href="add_product.php" class="btn btn-success">Add Product</a>
+            <a href="add_product.php" class="btn btn-success"><i class="fas fa-plus"></i> Add Product</a>
         </div>
 
         <!-- Products Table -->
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th>Product ID</th>
                     <th>Product Name</th>
@@ -78,13 +80,13 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                         <tr>
                             <td><?= htmlspecialchars($product['product_id']); ?></td>
                             <td><?= htmlspecialchars($product['product_name']); ?></td>
-                            <td><img src="<?= htmlspecialchars($product['product_image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="img-thumbnail" style="width: 100px;"></td>
+                            <td><img src="./product_images/<?= htmlspecialchars($product['product_image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="img-thumbnail" style="width: 100px;"></td>
                             <td>Rs <?= htmlspecialchars($product['product_price']); ?></td>
                             <td><?= htmlspecialchars($product['product_description']); ?></td>
                             <td><?= htmlspecialchars($product['product_stock']); ?></td>
                             <td>
-                                <a href="edit_product.php?id=<?= $product['product_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="manage_products.php?delete=<?= $product['product_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                                <a href="edit_product.php?id=<?= $product['product_id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                <a href="manage_products.php?delete=<?= $product['product_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');"><i class="fa fa-trash"></i> Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -98,7 +100,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
         <!-- Back to Dashboard Button -->
         <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-gamepad"></i> Dashboard</a>
         </div>
     </div>
 

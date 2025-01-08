@@ -43,8 +43,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
 </head>
 <body>
 
@@ -78,9 +80,8 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
                             <td><?= htmlspecialchars($user['user_email']); ?></td>
                             <td><?= htmlspecialchars($user['user_phone']); ?></td>
                             <td>
-                                <a href="view_user.php?id=<?= $user['user_id']; ?>" class="btn btn-info btn-sm">View</a>
-                                <a href="edit_user.php?id=<?= $user['user_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="manage_users.php?delete=<?= $user['user_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                <a href="edit_user.php?id=<?= $user['user_id']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                <a href="manage_users.php?delete=<?= $user['user_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');"><i class="fa fa-trash"></i> Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -94,7 +95,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
         <!-- Back to Dashboard Button -->
         <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-gamepad"></i> Dashboard</a>
         </div>
     </div>
 

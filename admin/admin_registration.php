@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Success message
             $success_message = "Registration successful! Please log in.";
-            sleep(1);
             header("Location: admin_login.php");
             exit;
         }

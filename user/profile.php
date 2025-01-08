@@ -13,10 +13,10 @@ if (!isset($_SESSION['user_id'])) {
 
 
 // Fetch user details
-$username = $_SESSION['user_name'];
-$sql = "SELECT * FROM `user` WHERE `user_name` = :username";
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM `user` WHERE `user_id` = :user_id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':username', $username, PDO::PARAM_STR);
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
 $stmt->execute();
 $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
 

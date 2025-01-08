@@ -41,7 +41,9 @@ $total_products = $stmt_products->fetch(PDO::FETCH_ASSOC)['total_products'];
     <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
 </head>
 <body>
-
+<div class="container">
+            <a href="admin_logout.php" class="btn btn-danger float-right"><span><i class="fa fa-sign-out-alt"></i></span> Logout</a>
+        </div>
     <div class="container mt-5">
         <h1 class="text-center">Welcome, <?= htmlspecialchars($admin_name); ?>!</h1>
 
@@ -83,20 +85,20 @@ $total_products = $stmt_products->fetch(PDO::FETCH_ASSOC)['total_products'];
         <!-- Quick Links -->
         <div class="row mt-5 text-center"> 
             <div class="col-md-6">
-                <a href="manage_users.php" class="btn btn-primary">Manage Users</a>
+                <a href="manage_users.php" class="btn btn-primary"><i class="fa fa-user"></i> Manage Users</a>
             </div>
             <div class="col-md-6">
-                <a href="manage_orders.php" class="btn btn-primary">Manage Orders</a>
+                <a href="manage_orders.php" class="btn btn-primary"><i class="fa fa-box-open"></i> Manage Orders</a>
             </div>
             <div class="col-md-6 mt-3">
-                <a href="manage_products.php" class="btn btn-primary">Manage Products</a>
+                <a href="manage_products.php" class="btn btn-primary"><i class="fa fa-box"></i> Manage Products</a>
             </div>
+            <div class="col-md-6 mt-3">
+                <a href="manage_payments.php" class="btn btn-primary"><i class="fa fa-credit-card"></i> Manage Payment</a>
         </div>
 
         <!-- Logout -->
-        <div class="text-center mt-5">
-            <a href="admin_logout.php" class="btn btn-danger"><span><i class="fa fa-sign-out-alt"></i></span> Logout</a>
-        </div>
+     
     </div>
 
     <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->

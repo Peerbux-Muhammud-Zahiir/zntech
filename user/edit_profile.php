@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Custom Styles -->
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
 </head>
 <body>
     <?php include('../includes/header.php'); ?> <!-- Include header -->
@@ -111,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="text-center">
                 
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Changes</button>
-                <button type="reset" class="btn btn-secondary"><i class="fa fa-undo
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="reset" class="btn btn-secondary"><i class="fa fa-undo"></i> Reset</button>
                 </div>
             </div>
 

@@ -18,6 +18,7 @@ define('BASE_URL', 'http://localhost/zntech/');
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
 </head>
 <body>
 
@@ -42,7 +43,7 @@ define('BASE_URL', 'http://localhost/zntech/');
                 <li class="nav-item">
                     <a href="<?= BASE_URL; ?>products.php"><i class="fa fa-box-open"></i> Products</a>
                 <li class="nav-item">
-                    <a href="<?= BASE_URL; ?>index.php"><i class="fa fa-shopping-cart ml-3"></i> Shop</a>
+                    <a href="<?= BASE_URL; ?>cart.php"><i class="fa fa-shopping-cart ml-3"></i> Cart</a>
                 </li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>

@@ -22,13 +22,23 @@ $user_stmt->bindParam(':user_id', $user_id);
 $user_stmt->execute();
 $user = $user_stmt->fetch(PDO::FETCH_ASSOC);
 
+// Check if the user exists
+if (!$user) {
+    $_SESSION['error_message'] = "User not found. Please log in first.";
+    header("Location: login.php");
+    exit;
+}
+
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $delivery_address = $_POST['delivery_address'];
+    $payment_method = $_POST['payment_method'];  // Added payment method
 
     // Validate input
     if (empty($delivery_address)) {
         $error_message = "Delivery address is required.";
+    } elseif (empty($payment_method)) {
+        $error_message = "Payment method is required.";
     } else {
         try {
             // Insert order into the `order` table
@@ -39,11 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $order_stmt = $pdo->prepare($order_query);
             $order_stmt->execute([
                 ':user_id' => $user_id,
-                ':delivery_address' => $delivery_address
+                ':delivery_address' => $delivery_address,
             ]);
 
             // Get the last inserted order ID
             $order_id = $pdo->lastInsertId();
+
+            // Insert payment into the `payment` table
+            $payment_query = "INSERT INTO `payment` (payment_method, payment_status, order_id, payment_date) 
+                              VALUES (:payment_method, 'pending', :order_id, NOW())";
+            $payment_stmt = $pdo->prepare($payment_query);
+            $payment_stmt->execute([
+                ':payment_method' => $payment_method,
+                ':order_id' => $order_id
+            ]);
 
             // Insert items into `order_product` table
             $product_query = "INSERT INTO order_product (order_id, product_id, quantity) 
@@ -88,19 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="container mt-5">
     <h1 class="text-center mb-4">Checkout</h1>
 
-    <!-- Error or success messages -->
-    <?php if (isset($error_message)): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($error_message); ?></div>
-    <?php endif; ?>
 
-    <!-- Checkout Form -->
-    <form action="checkout.php" method="POST">
-        <div class="form-group">
-            <label for="delivery_address">Delivery Address</label>
-            <textarea id="delivery_address" name="delivery_address" class="form-control" rows="3" required></textarea>
-        </div>
-
-        <h3 class="mt-4">Order Summary</h3>
+    <h3 class="mt-4">Order Summary</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -126,6 +134,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <?php endforeach; ?>
             </tbody>
         </table>
+        
+    <!-- Error or success messages -->
+    <?php if (isset($error_message)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error_message); ?></div>
+    <?php endif; ?>
+
+    <!-- Checkout Form -->
+    <form action="checkout.php" method="POST">
+        <div class="form-group">
+            <label for="delivery_address" class="form-label">Delivery Address</label>
+            <input id="delivery_address" name="delivery_address" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="form-group">
+            <label for="payment_method" class="form-label">Payment Method</label>
+            <select id="payment_method" name="payment_method" class="form-control w-25" required>
+                <option value="" disabled selected>Select a Payment Method</option>
+                <option value="debit">Debit</option>
+                <option value="credit">Credit</option>
+                <option value="cash">Cash</option>
+                <option value="pay_on_delivery">Pay on Delivery</option>
+            </select>
+        </div>
+
+       
 
         <h4 class="text-right">Grand Total: Rs <?= $grand_total; ?></h4>
 

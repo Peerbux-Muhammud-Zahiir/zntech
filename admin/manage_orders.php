@@ -60,73 +60,72 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Orders</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css"> <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
 </head>
 <body>
 
+<div class="container mt-5">
+    <h1 class="text-center">Manage Orders</h1>
 
-    <div class="container mt-5">
-        <h1 class="text-center">Manage Orders</h1>
+    <!-- Show success message -->
+    <?php if (isset($_SESSION['success_message'])): ?>
+        <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success_message']); ?></div>
+        <?php unset($_SESSION['success_message']); ?>
+    <?php endif; ?>
 
-        <!-- Show success message -->
-        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success_message']); ?></div>
-            <?php unset($_SESSION['success_message']); ?>
-        <?php endif; ?>
-
-        <!-- Orders Table -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>User name</th>
-                    <th>Order Date</th>
-                    <th>Delivery Address</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($orders) > 0): ?>
-                    <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($order['order_id']); ?></td>
-                            <td><?= htmlspecialchars($order['user_name']); ?></td>
-                            <td><?= htmlspecialchars($order['order_date']); ?></td>
-                            <td><?= htmlspecialchars($order['delivery_address']); ?></td>
-                            <td>
-                                <!-- <?= htmlspecialchars($order['order_status']); ?> -->
-                                <form action="manage_orders.php" method="GET" style="display:inline;">
-                                    <select name="status" class="dropdown" required>
-                                        <option value="pending" <?= $order['order_status'] == 'pending' ? 'selected' : ''; ?>>pending</option>
-                                        <option value="shipped" <?= $order['order_status'] == 'shipped' ? 'selected' : ''; ?>>shipped</option>
-                                        <option value="delivered" <?= $order['order_status'] == 'delivered' ? 'selected' : ''; ?>>delivered</option>
-                                    </select>
-                                    <input type="hidden" name="update" value="<?= $order['order_id']; ?>">
-                                    <button type="submit" class="btn btn-warning btn-sm mt-2">Update Status</button>
-                                </form>
-                            </td>
-                            <td>
-                                <a href="view_order.php?id=<?= $order['order_id']; ?>" class="btn btn-info btn-sm">View</a>
-                                <a href="manage_orders.php?delete=<?= $order['order_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+    <!-- Orders Table -->
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Order ID</th>
+                <th>User Name</th>
+                <th>Order Date</th>
+                <th>Delivery Address</th>
+                <th>Order Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (count($orders) > 0): ?>
+                <?php foreach ($orders as $order): ?>
                     <tr>
-                        <td colspan="6" class="text-center">No orders found.</td>
+                        <td><?= htmlspecialchars($order['order_id']); ?></td>
+                        <td><?= htmlspecialchars($order['user_name']); ?></td>
+                        <td><?= htmlspecialchars($order['order_date']); ?></td>
+                        <td><?= htmlspecialchars($order['delivery_address']); ?></td>
+                        <td>
+                            <form action="manage_orders.php" method="GET" style="display:inline;">
+                                <select name="status" class="dropdown" required>
+                                    <option value="pending" <?= $order['order_status'] == 'pending' ? 'selected' : ''; ?>>pending</option>
+                                    <option value="shipped" <?= $order['order_status'] == 'shipped' ? 'selected' : ''; ?>>shipped</option>
+                                    <option value="delivered" <?= $order['order_status'] == 'delivered' ? 'selected' : ''; ?>>delivered</option>
+                                </select>
+                                <input type="hidden" name="update" value="<?= $order['order_id']; ?>">
+                                <button type="submit" class="btn btn-warning btn-sm mt-2">Update Status</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="view_order.php?id=<?= $order['order_id']; ?>" class="btn btn-info btn-sm">View</a>
+                            <a href="manage_orders.php?delete=<?= $order['order_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+                        </td>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="6" class="text-center">No orders found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 
-        <!-- Back to Dashboard Button -->
-        <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
-        </div>
+    <!-- Back to Dashboard Button -->
+    <div class="text-center mt-5">
+        <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-gamepad"></i> Dashboard</a>
     </div>
+</div>
 
-    <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
+<script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
 </body>
 </html>
