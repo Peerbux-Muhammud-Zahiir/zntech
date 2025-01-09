@@ -1,9 +1,6 @@
 <?php
-// Start a session if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+// Start session
+session_start();
 define('BASE_URL2', 'http://localhost/zntech/');
 
 // Include database connection and common functions
@@ -29,7 +26,8 @@ $reviews_allowed = [];
 
 if ($user_id) {
     $history_query = "
-        SELECT o.order_id, o.order_date, o.order_status, p.product_name, p.product_price, op.quantity ,p.product_image_url, pay.payment_status
+        SELECT o.order_id, o.order_date, o.order_status, p.product_name, p.product_price, op.quantity, 
+               p.product_image_url, p.product_id, pay.payment_status
         FROM `order` o
         JOIN order_product op ON o.order_id = op.order_id
         JOIN product p ON op.product_id = p.product_id
@@ -42,8 +40,11 @@ if ($user_id) {
 
     // Determine if review is allowed based on order_status and payment_status
     foreach ($purchase_history as $history) {
-        if ($history['order_status'] == 'delivered' && $history['payment_status'] == 'paid') {
-            $reviews_allowed[] = $history['order_id']; // Allow review for this order
+        if ($history['order_status'] == 'delivered' && $history['payment_status'] == 'completed') {
+            $reviews_allowed[] = [
+                'order_id' => $history['order_id'],
+                'product_id' => $history['product_id'],
+            ];
         }
     }
 }
@@ -143,11 +144,20 @@ if ($user_id) {
                         <td>Rs <?= htmlspecialchars($history['product_price']); ?></td>
                         <td><?= htmlspecialchars($history['quantity']); ?></td>
                         <td>
-                            <?php if (in_array($history['order_id'], $reviews_allowed)): ?>
-                                <a href="leave_review.php?order_id=<?= $history['order_id']; ?>" class="btn btn-warning btn-sm">Leave Review</a>
-                            <?php else: ?>
-                                <span class="text-muted">Review not available</span>
-                            <?php endif; ?>
+                            <a href="review.php?order_id=<?= htmlspecialchars($history['order_id']); ?>&product_id=<?= htmlspecialchars($history['product_id']); ?>" 
+                               class="btn btn-success btn-sm"
+                               <?php
+                                   $is_allowed = false;
+                                   foreach ($reviews_allowed as $allowed) {
+                                       if ($allowed['order_id'] == $history['order_id'] && $allowed['product_id'] == $history['product_id']) {
+                                           $is_allowed = true;
+                                           break;
+                                       }
+                                   }
+                                   echo $is_allowed ? '' : 'disabled';
+                               ?>>
+                                <i class="fa fa-pencil"></i> Review
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

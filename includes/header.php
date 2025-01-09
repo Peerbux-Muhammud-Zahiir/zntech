@@ -44,7 +44,11 @@ define('BASE_URL', 'http://localhost/zntech/');
                 <!-- Products
                   -->
                 <li class="nav-item">
-                    <a href="<?= BASE_URL; ?>products.php"><i class="fa fa-box-open"></i> Products</a>
+                    <a href="<?= BASE_URL; ?>products.php">
+                        <i class="fa fa-box-open"></i> 
+                        Products
+                        <!-- <button class="btn btn-primary"><i class="fa fa-box-open"></i> Products</button> -->
+                    </a>
                 <li class="nav-item">
                     <a href="<?= BASE_URL; ?>cart.php"><i class="fa fa-shopping-cart ml-3"></i> Cart</a>
                 </li>
@@ -55,7 +59,7 @@ define('BASE_URL', 'http://localhost/zntech/');
                     <a href="<?= BASE_URL; ?>user/profile.php"><i class="fa fa-user ml-3"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?></a>
                     </li>
                     <li class="nav-item">
-                    <a href="<?= BASE_URL; ?>user/logout.php"><i class="fa fa-sign-out-alt ml-3"></i> Logout</a>
+                    <a href="<?= BASE_URL; ?>user/logout.php"><i class="fa fa-sign-out-alt ml-3 text-danger"></i><span class="text-danger"> Logout</span></a>
                     </li>
                 <?php else: ?>
                     <!-- User is not logged in -->
@@ -70,6 +74,3 @@ define('BASE_URL', 'http://localhost/zntech/');
         </div>
     </div>
 </nav>
-
-<!-- Page content starts here -->
-<div class="container mt-4">

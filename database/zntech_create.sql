@@ -45,20 +45,19 @@ CREATE TABLE `order_product` (
     FOREIGN KEY (product_id) REFERENCES `product`(product_id) ON DELETE CASCADE
 );
 
--- Review Table
 CREATE TABLE `review` (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
-    reviewer_name VARCHAR(100),
-    reviewer_gender ENUM('male', 'female', 'other'),
-    rental_date_from DATE,
-    rental_date_to DATE,
-    house_rating INT CHECK(house_rating >= 1 AND house_rating <= 5),
-    house_comment TEXT,
-    flagged BOOLEAN DEFAULT FALSE,
-    banned BOOLEAN DEFAULT FALSE,
+    user_id INT NOT NULL,
     product_id INT NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES `product`(product_id) ON DELETE CASCADE
+    review_text TEXT NOT NULL,
+    review_rating INT NOT NULL CHECK (review_rating BETWEEN 1 AND 5), -- Rating between 1 and 5
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES `product`(product_id) ON DELETE CASCADE,
+    CONSTRAINT user_product_review_constraint UNIQUE (user_id, product_id) -- Prevent duplicate reviews by the same user for the same product
 );
+
+
 
 -- StockLog Table
 CREATE TABLE `stock_log` (

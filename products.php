@@ -46,7 +46,7 @@ try {
             <?php foreach ($products as $product): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm">
-                        <img src="assets/images/<?= htmlspecialchars($product['product_image_url']); ?>" class="card-img-top" alt="<?= htmlspecialchars($product['product_name']); ?>" style="height: 200px; object-fit: cover;">
+                        <img src="./admin/product_images/<?= htmlspecialchars($product['product_image_url']); ?>" class="card-img-top" alt="<?= htmlspecialchars($product['product_name']); ?>" style="height: 200px; object-fit: cover;">
                         <div class="card-body text-center">
                             <h5 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h5>
                             <p class="card-text">
