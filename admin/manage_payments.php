@@ -44,7 +44,7 @@ if (isset($_POST['delete_payment'])) {
     $delete_stmt->bindParam(':payment_id', $payment_id);
 
     if ($delete_stmt->execute()) {
-        echo "<script>alert('Payment deleted successfully.'); window.location.href = 'manage_payment.php';</script>";
+        echo "<script>alert('Payment deleted successfully.'); window.location.href = 'manage_payments.php';</script>";
     } else {
         echo "<script>alert('Error deleting payment.');</script>";
     }
@@ -58,6 +58,7 @@ if (isset($_POST['delete_payment'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Payments</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container py-4">
@@ -69,7 +70,7 @@ if (isset($_POST['delete_payment'])) {
             <th>Order ID</th>
             <th>Customer Name</th>
             <th>Payment Method</th>
-            <th>Order Status</th>
+            <th>Payment Status</th>
             <th>Order Date</th>
             <th>Delivery Address</th>
             <th>Payment Date</th>
@@ -79,33 +80,36 @@ if (isset($_POST['delete_payment'])) {
         <tbody>
         <?php foreach ($payments as $payment): ?>
             <tr>
-                <td><?php echo $payment['payment_id']; ?></td>
-                <td><?php echo $payment['order_id']; ?></td>
-                <td><?php echo $payment['user_name']; ?></td>
-                <td><?php echo ucfirst($payment['payment_method']); ?></td>
-                <td><?php echo ucfirst($payment['payment_status']); ?></td>
-                <td><?php echo $payment['order_date']; ?></td>
-                <td><?php echo $payment['delivery_address']; ?></td>
-                <td><?php echo $payment['payment_date']; ?></td>
+                <td><?= htmlspecialchars($payment['payment_id']); ?></td>
+                <td><?= htmlspecialchars($payment['order_id']); ?></td>
+                <td><?= htmlspecialchars($payment['user_name']); ?></td>
+                <td><?= htmlspecialchars($payment['payment_method']); ?></td>
                 <td>
                     <form action="" method="post" class="d-inline">
                         <input type="hidden" name="payment_id" value="<?php echo $payment['payment_id']; ?>">
-                        <select name="payment_status" class="form-control form-control-sm mb-2">
-                            <option value="pending" <?php echo ($payment['payment_status'] == 'pending') ? 'selected' : ''; ?>>Pending</option>
-                            <option value="paid" <?php echo ($payment['payment_status'] == 'completed') ? 'selected' : ''; ?>>Paid</option>
-                            <option value="refunded" <?php echo ($payment['payment_status'] == 'refunded') ? 'selected' : ''; ?>>Refunded</option>
+                        <select name="payment_status" class="form-control form-control-sm">
+                            <option value="pending" <?php echo ($payment['payment_status'] === 'pending') ? 'selected' : ''; ?>>Pending</option>
+                            <option value="completed" <?php echo ($payment['payment_status'] === 'completed') ? 'selected' : ''; ?>>Completed</option>
+                            <option value="refunded" <?php echo ($payment['payment_status'] === 'refunded') ? 'selected' : ''; ?>>Refunded</option>
                         </select>
-                        <button type="submit" name="update_status" class="btn btn-sm btn-primary">Update</button>
+                        <button type="submit" name="update_status" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</button>
                     </form>
+                <td><?= htmlspecialchars($payment['order_date']); ?></td> 
+                <td><?= htmlspecialchars($payment['delivery_address']); ?></td>
+                <td><?= htmlspecialchars($payment['payment_date']); ?></td>   
+                <td> 
                     <form action="" method="post" class="d-inline">
                         <input type="hidden" name="payment_id" value="<?php echo $payment['payment_id']; ?>">
-                        <button type="submit" name="delete_payment" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this payment?');">Delete</button>
+                        <button type="submit" name="delete_payment" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this payment?');"><i class="fa fa-trash"></i> Delete</button>
                     </form>
                 </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<div class="text-center">
+<button class="btn btn-secondary" onclick="window.location.href = 'admin_dashboard.php';"><i class="fa fa-home"></i> Dashboard</button>
 </div>
 </body>
 </html>

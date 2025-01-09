@@ -68,32 +68,43 @@ if (isset($_POST['insert_product'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
 </head>
-<body>
-    <div class="container py-4">
-        <h2>Add New Product</h2>
+<body class="bg-light">
+<div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Add Product</h3>
+</div>
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="form-outline mb-4">
+        <div class="card-body">
+            <div class="form-group">
                 <label for="product_name" class="form-label">Product Name</label>
                 <input type="text" name="product_name" id="product_name" class="form-control" required>
             </div>
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_description" class="form-label">Product Description</label>
                 <input type="text" name="product_description" id="product_description" class="form-control" required>
             </div>
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_price" class="form-label">Price</label>
-                <input type="number" name="product_price" id="product_price" class="form-control" required>
+                <input type="number" name="product_price" id="product_price" class="form-control" min="0" required>
             </div>
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_quantity" class="form-label">Quantity</label>
-                <input type="number" name="product_quantity" id="product_quantity" class="form-control" required>
+                <input type="number" name="product_quantity" id="product_quantity" class="form-control" min="0" required>
             </div>
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_image" class="form-label">Product Image</label>
                 <input type="file" name="product_image" id="product_image" class="form-control" required>
             </div>
-            <input type="submit" value="Add Product" name="insert_product" class="btn btn-primary">
+            <div class="text-center">
+            <button type="submit" name="insert_product" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href = 'manage_products.php';"><i class="fa fa-xmark"></i> Cancel</button>
+</div>
+        </div>
         </form>
     </div>
 </body>

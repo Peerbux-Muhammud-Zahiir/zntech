@@ -62,7 +62,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
         <!-- Users Table -->
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th>User ID</th>
                     <th>Name</th>

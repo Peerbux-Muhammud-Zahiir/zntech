@@ -83,7 +83,7 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
                 <th>User Name</th>
                 <th>Order Date</th>
                 <th>Delivery Address</th>
-                <th>Order Status</th>
+                <th>Delivery Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -103,12 +103,11 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
                                     <option value="delivered" <?= $order['order_status'] == 'delivered' ? 'selected' : ''; ?>>delivered</option>
                                 </select>
                                 <input type="hidden" name="update" value="<?= $order['order_id']; ?>">
-                                <button type="submit" class="btn btn-warning btn-sm mt-2">Update Status</button>
+                                <button type="submit" class="btn btn-success btn-sm mt-2"><i class="fa fa-check"></i> Update Status</button>
                             </form>
                         </td>
                         <td>
-                            <a href="view_order.php?id=<?= $order['order_id']; ?>" class="btn btn-info btn-sm">View</a>
-                            <a href="manage_orders.php?delete=<?= $order['order_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+                            <a href="manage_orders.php?delete=<?= $order['order_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');"><i class="fa fa-trash"></i> Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -122,7 +121,7 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
 
     <!-- Back to Dashboard Button -->
     <div class="text-center mt-5">
-        <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-gamepad"></i> Dashboard</a>
+        <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-home"></i> Dashboard</a>
     </div>
 </div>
 
