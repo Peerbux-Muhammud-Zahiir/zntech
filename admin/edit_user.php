@@ -90,7 +90,7 @@ if (isset($_POST['update_user'])) {
                 <!-- Submit Button -->
                  <div class="text-center">
                  <button type="submit" name="update_user" class="btn btn-success"><i class="fa fa-edit"></i> Update</button>
-                    <a href="manage_users.php" class="btn btn-secondary"><i class="fa fa-cancel"></i> Cancel</a>
+                    <a href="manage_users.php" class="btn btn-secondary"><i class="fa fa-xmark"></i> Cancel</a>
                  </div>
             
         </form>

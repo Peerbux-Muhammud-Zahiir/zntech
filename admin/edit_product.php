@@ -110,41 +110,56 @@ if (isset($_POST['update_product'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container py-4">
-        <h2>Edit Product</h2>
+<body class="bg-light">
+    <div class="container">
+    <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Edit Product</h3>
+                    </div>
         <form action="" method="post" enctype="multipart/form-data">
-            <!-- Product Name -->
-            <div class="form-outline mb-4">
+        <div class="card-body">
+            <div class="form-group">
                 <label for="product_name" class="form-label">Product Name</label>
                 <input type="text" name="product_name" id="product_name" class="form-control" value="<?= htmlspecialchars($product['product_name']) ?>" required>
             </div>
             <!-- Product Description -->
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_description" class="form-label">Product Description</label>
                 <textarea name="product_description" id="product_description" class="form-control" required><?= htmlspecialchars($product['product_description']) ?></textarea>
             </div>
             <!-- Product Price -->
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_price" class="form-label">Price</label>
                 <input type="number" step="0.01" name="product_price" id="product_price" class="form-control" value="<?= htmlspecialchars($product['product_price']) ?>" required>
             </div>
             <!-- Product Stock -->
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_stock" class="form-label">Stock Quantity</label>
                 <input type="number" name="product_stock" id="product_stock" class="form-control" value="<?= htmlspecialchars($product['product_stock']) ?>" required>
             </div>
             <!-- Product Image -->
-            <div class="form-outline mb-4">
+            <div class="form-group">
                 <label for="product_image" class="form-label">Product Image</label>
                 <input type="file" name="product_image" id="product_image" class="form-control">
-                <small>Current Image: <?= htmlspecialchars($product['product_image_url']) ?></small>
+                <small>Current Image: <img src="./product_images/<?= htmlspecialchars($product['product_image_url']) ?>" alt="Product Image" width="100" height="100"><?= htmlspecialchars($product['product_image_url']) ?></small>
             </div>
-            <!-- Submit Button -->
-            <input type="submit" value="Update Product" name="update_product" class="btn btn-primary">
+            <div class="text-center">
+                 <!-- Submit Button -->
+            <button type="submit" value="Update Product" name="update_product" class="btn btn-primary"><i class="fa fa-tick"></i> Update</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href = 'manage_products.php';"><i class="fa fa-xmark"></i> Cancel</button>    
+        </div>
+           
+        
         </form>
+        </div>
+        </div>
+        </div>
+        </div>
     </div>
 </body>
 </html>

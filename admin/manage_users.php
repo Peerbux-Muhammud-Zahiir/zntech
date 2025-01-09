@@ -95,7 +95,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
         <!-- Back to Dashboard Button -->
         <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-gamepad"></i> Dashboard</a>
+            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-home"></i> Dashboard</a>
         </div>
     </div>
 
