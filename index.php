@@ -29,7 +29,7 @@ try {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=61096&format=png&color=7950F2">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=F6ULPz8GgDMP&format=png&color=bf40bf">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>

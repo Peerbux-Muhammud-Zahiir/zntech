@@ -100,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=F6ULPz8GgDMP&format=png&color=bf40bf">
 </head>
 <body>
 <?php include('../includes/header.php'); ?>
@@ -110,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <h3 class="mt-4">Order Summary</h3>
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th>Product</th>
                     <th>Price</th>
@@ -142,30 +143,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- Checkout Form -->
     <form action="checkout.php" method="POST">
-        <div class="form-group">
-            <label for="delivery_address" class="form-label">Delivery Address</label>
-            <input id="delivery_address" name="delivery_address" class="form-control" rows="3" required></textarea>
-        </div>
+        <div class="card p-4">
+                <div class="form-group">
+                    <label for="delivery_address" class="form-label">Delivery Address</label>
+                    <input id="delivery_address" name="delivery_address" class="form-control" rows="3" required></textarea>
+                </div>
 
-        <!-- Payment Method Selection -->
-        <div class="form-group">
-            <label for="payment_method" class="form-label">Payment Method</label>
-            <select id="payment_method" name="payment_method" class="form-control w-25" required>
-                <option value="" disabled selected>Select a Payment Method</option>
-                <option value="debit">Debit</option>
-                <option value="credit">Credit</option>
-                <option value="cash">Cash</option>
-                <option value="pay_on_delivery">Pay on Delivery</option>
-            </select>
-        </div>
-
+                <!-- Payment Method Selection -->
+                <div class="form-group">
+                    <label for="payment_method" class="form-label">Payment Method</label>
+                    <select id="payment_method" name="payment_method" class="form-control w-25" required>
+                        <option value="" disabled selected>Select a Payment Method</option>
+                        <option value="debit">Debit</option>
+                        <option value="credit">Credit</option>
+                        <option value="pay_on_delivery">Pay on Delivery</option>
+                    </select>
+                </div>
+             
        
 
         <h4 class="text-right">Grand Total: Rs <?= $grand_total; ?></h4>
 
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Place Order</button>
+        <div class="text-right">
+            <button type="submit" class="btn btn-success btn-md"><i class="fa fa-dollar"></i> Checkout</button>
         </div>
+       </div> 
     </form>
 </div>
 

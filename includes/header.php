@@ -11,14 +11,14 @@ define('BASE_URL', 'http://localhost/zntech/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZN Tech - E-commerce</title>
+    <title>ZN Tech</title>
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link rel="icon" href="https://icons8.com/icon/F6ULPz8GgDMP/cube">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sevillana&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@ define('BASE_URL', 'http://localhost/zntech/');
     <div class="container">
         <!-- Logo and Home Link -->
         <a class="navbar-brand" href="<?= BASE_URL; ?>index.php">
-            <i class="fa fa-bolt" style="color: #82589F;"></i><span style="color: #82589F;font-weight:bold;text-decoration: none;"> ZN Tech</span>
+            <i class="fa fa-cube" style="color:#BF40BF;"></i><span style="color: #BF40BF;font-weight:bold;text-decoration: none;"> ZN Tech</span>
         </a>
         
         <!-- Toggler button for mobile view -->

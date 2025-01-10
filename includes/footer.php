@@ -24,7 +24,7 @@
         <!-- Footer Text -->
         <section class="mb-4">
             <p class="m-0" style="font-family: 'Poppins', sans-serif;">
-                &copy; <?= date("Y"); ?> ZN Tech - E-commerce. All Rights Reserved.
+                &copy; <?= date("Y"); ?> ZN Tech. All Rights Reserved.
             </p>
         </section>
     </div>
