@@ -51,10 +51,10 @@ $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
                         <p><strong>Email:</strong> <?= htmlspecialchars($user_details['user_email']); ?></p>
                         <p><strong>Phone:</strong> <?= htmlspecialchars($user_details['user_phone']); ?></p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
                         <a href="edit_profile.php" class="btn btn-warning"><i class="fa fa-edit"></i> Edit Profile</a>
                         <a href="delete_profile.php" class="btn btn-danger"><i class="fa fa-trash"></i> Delete Profile</a>
-                        <a href="../user/logout.php" class="btn btn-danger"><i class="fa fa-sign-out-alt"></i> Logout</a>
+                        <!-- <a href="../user/logout.php" class="btn btn-danger"><i class="fa fa-sign-out-alt"></i> Logout</a> -->
                     </div>
                 </div>
             </div>

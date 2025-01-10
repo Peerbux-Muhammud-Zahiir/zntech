@@ -60,14 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link rel="icon" href="../assets/images/favicon2.png"> <!-- Favicon -->
 </head>
-<body class="bg-light">
+<body class="bg-light" style="background-image: url('../assets/images/bg-image.webp');">
 
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card shadow bg-white rounded">
                     <div class="card-header text-center">
                         <h3>Login</h3>
                     </div>
@@ -90,11 +90,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Login</button>
                             </div>
                         </form>
 
-                        <p class="text-center">Don't have an account? <a href="./registration.php">Register here</a></p>
+                        <p class="text-center">Don't have an account? <a href="./registration.php"><button class="btn btn-success btn-sm">Sign Up</button></a> <a href="./registration.php"></a></p>
                     </div>
                 </div>
             </div>

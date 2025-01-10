@@ -59,10 +59,14 @@ if (isset($_POST['delete_payment'])) {
     <title>Manage Payments</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
 <div class="container py-4">
     <h2 class="text-center mb-4">Manage Payments</h2>
+    <span class="float-left mb-2">
+<button class="btn btn-secondary btn-sm" onclick="window.location.href = 'admin_dashboard.php';"><i class="fa fa-home"></i> Dashboard</button>
+</span>
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
@@ -108,8 +112,6 @@ if (isset($_POST['delete_payment'])) {
         </tbody>
     </table>
 </div>
-<div class="text-center">
-<button class="btn btn-secondary" onclick="window.location.href = 'admin_dashboard.php';"><i class="fa fa-home"></i> Dashboard</button>
-</div>
+
 </body>
 </html>

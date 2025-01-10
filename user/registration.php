@@ -60,9 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
 </head>
-<body>
+<body class="bg-light" style="background-image: url('../assets/images/bg-image.webp');">
 
     <div class="container">
         <div class="row justify-content-center mt-5">
@@ -108,16 +109,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-success btn-sm">Sign Up</button>
                             </div>
                         </form>
 
-                        <p class="text-center">Already have an account? <a href="./login.php">Login here</a></p>
+                        <p class="text-center">Already have an account? <a href="./login.php"><button class="btn btn-primary btn-sm">Log In</button></a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
 </body>

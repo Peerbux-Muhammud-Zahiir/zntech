@@ -53,7 +53,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 
     <div class="container mt-5">
         <h1 class="text-center">Manage Users</h1>
-
+<!-- Back to Dashboard Button -->
+<div class="float-left mb-2">
+            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-home"></i> Dashboard</a>
+        </div>
         <!-- Show success message -->
         <?php if (isset($_SESSION['success_message'])): ?>
             <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success_message']); ?></div>
@@ -93,10 +96,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
             </tbody>
         </table>
 
-        <!-- Back to Dashboard Button -->
-        <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-home"></i> Dashboard</a>
-        </div>
+        
     </div>
 
     <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->

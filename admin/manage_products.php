@@ -57,10 +57,14 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         <?php endif; ?>
 
         <!-- Add Product Button -->
-        <div class="text-right mb-3">
-            <a href="add_product.php" class="btn btn-success"><i class="fas fa-plus"></i> Add Product</a>
-        </div>
+        <span class="float-right mb-2">
+            <a href="add_product.php" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add Product</a>
+        </span>
 
+           <!-- Back to Dashboard Button -->
+           <span class="float-left mb-2">
+            <a href="admin_dashboard.php" class="btn btn-secondary btn-sm"><i class="fas fa-home"></i> Dashboard</a>
+        </span>
         <!-- Products Table -->
         <table class="table table-bordered">
             <thead class="thead-light">
@@ -98,10 +102,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
             </tbody>
         </table>
 
-        <!-- Back to Dashboard Button -->
-        <div class="text-center mt-5">
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-home"></i> Dashboard</a>
-        </div>
+     
     </div>
 
     <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->

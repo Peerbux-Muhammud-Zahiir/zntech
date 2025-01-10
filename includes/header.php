@@ -17,7 +17,7 @@ define('BASE_URL', 'http://localhost/zntech/');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,18 +55,18 @@ define('BASE_URL', 'http://localhost/zntech/');
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- User is logged in -->
-                    <li class="nav-item">
+                    <li class="">
                     <a href="<?= BASE_URL; ?>user/profile.php"><i class="fa fa-user ml-3"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="">
                     <a href="<?= BASE_URL; ?>user/logout.php"><i class="fa fa-sign-out-alt ml-3 text-danger"></i><span class="text-danger"> Logout</span></a>
                     </li>
                 <?php else: ?>
                     <!-- User is not logged in -->
-                    <li class="nav-item">
+                    <li class="">
                         <a  href="./user/registration.php"><i class="fa fa-user-plus ml-3"></i> Register</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="">
                         <a  href="./user/login.php"><i class="fa fa-sign-in-alt ml-3"></i> Login</a>
                     </li>
                 <?php endif; ?>

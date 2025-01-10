@@ -112,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="text-center">
                 
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                <button type="reset" class="btn btn-secondary"><i class="fa fa-undo"></i> Reset</button>
+                <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Save</button>
+                <button onclick="window.location.href = 'profile.php';" class="btn btn-secondary btn-sm"><i class="fa fa-times"></i> Cancel</button>
                 </div>
             </div>
 

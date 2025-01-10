@@ -31,14 +31,26 @@ try {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
 
 <?php include('./includes/header.php'); // Include header with navigation ?>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Our Products</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-left" style="color: #007BFF;">Our Products</h1>
+    <form action="search.php" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-sm" placeholder="Search..." name="search" required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+    </form>
+</div>
     <div class="row">
         <?php if (!empty($products)): ?>
             <?php foreach ($products as $product): ?>
@@ -53,12 +65,13 @@ try {
                             <p class="text-success font-weight-bold">
                                 Rs <?= htmlspecialchars($product['product_price']); ?>
                             </p>
-                            <a href="product_details.php?id=<?= $product['product_id']; ?>" class="btn btn-primary btn-sm">
-                                View Details
-                            </a>
                             <a href="<?= BASE_URL3; ?>user/add_to_cart.php?id=<?= $product['product_id']; ?>" class="btn btn-success btn-sm">
-                                Add to Cart
+                                <i class="fas fa-plus"></i> Add to Cart
                             </a>
+                            <a href="product_details.php?id=<?= $product['product_id']; ?>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                         
                         </div>
                     </div>
                 </div>

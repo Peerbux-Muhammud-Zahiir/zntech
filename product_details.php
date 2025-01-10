@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-define('BASE_URL', 'http://localhost/zntech/');
+define('BASE_URL1', 'http://localhost/zntech/');
 
 // Include database connection and utility functions
 include('./includes/db_connect.php');
@@ -27,9 +27,19 @@ try {
     die("Error fetching product: " . $e->getMessage());
 }
 
+
+
+
+
 // Fetch product reviews and calculate the average rating
 try {
-    $review_stmt = $pdo->prepare("SELECT * FROM review WHERE product_id = :product_id join user on review.user_id=user.user_id");
+    $sql="
+    SELECT review.*, user.user_name 
+    FROM review 
+    JOIN user ON review.user_id = user.user_id 
+    WHERE review.product_id = :product_id
+";
+    $review_stmt = $pdo->prepare($sql);
     $review_stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
     $review_stmt->execute();
     $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,7 +88,7 @@ try {
             </div>
 
             <!-- Add to Cart Button -->
-            <a href="cart.php?add=<?= $product['product_id']; ?>" class="btn btn-success">Add to Cart</a>
+            <a href="cart.php?add=<?= $product['product_id']; ?>" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add to Cart</a>
         </div>
     </div>
 
@@ -93,49 +103,19 @@ try {
                     <div class="d-flex justify-content-between">
                         <span><strong>Rating: </strong>
                             <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <i class="fas fa-star<?= ($i <= $review['rating']) ? '' : '-o'; ?>"></i>
+                                <i class="fas fa-star<?= ($i <= $review['review_rating']) ? '' : '-o'; ?>"></i>
                             <?php endfor; ?>
                         </span>
                         <span><strong>Reviewed by:</strong> <?= htmlspecialchars($review['user_name']); ?></span>
                     </div>
-                    <p><strong>Comment:</strong> <?= nl2br(htmlspecialchars($review['comment'])); ?></p>
+                    <p><strong>Comment:</strong> <?= nl2br(htmlspecialchars($review['review_text'])); ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
     <?php else: ?>
         <p>No reviews yet for this product. Be the first to review!</p>
     <?php endif; ?>
-
-    <!-- Submit a Review (only if logged in) -->
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <hr>
-        <h4>Submit a Review</h4>
-        <form method="POST" action="submit_review.php">
-            <input type="hidden" name="product_id" value="<?= $product_id; ?>">
-
-            <div class="form-group">
-                <label for="rating">Rating (1-5)</label>
-                <select id="rating" name="rating" class="form-control" required>
-                    <option value="">Select Rating</option>
-                    <option value="1">1 - Poor</option>
-                    <option value="2">2 - Fair</option>
-                    <option value="3">3 - Good</option>
-                    <option value="4">4 - Very Good</option>
-                    <option value="5">5 - Excellent</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="comment">Your Comment</label>
-                <textarea id="comment" name="comment" class="form-control" rows="4" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit Review</button>
-        </form>
-    <?php else: ?>
-        <p>You must be logged in to submit a review. <a href="login.php">Login</a></p>
-    <?php endif; ?>
-</div>
+<?php include('./includes/footer.php'); ?>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>

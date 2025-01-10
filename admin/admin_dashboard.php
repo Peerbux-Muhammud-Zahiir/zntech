@@ -95,7 +95,10 @@ $total_products = $stmt_products->fetch(PDO::FETCH_ASSOC)['total_products'];
             </div>
             <div class="col-md-6 mt-3">
                 <a href="manage_payments.php" class="btn btn-primary"><i class="fa fa-credit-card"></i> Manage Payment</a>
-        </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <a href="manage_reviews.php" class="btn btn-primary"><i class="fa fa-star"></i> Manage Reviews</a>
+            </div>
 
         <!-- Logout -->
      

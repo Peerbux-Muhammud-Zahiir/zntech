@@ -2,10 +2,27 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
+a{
+    color:grey;
+    transition:color 0.2s ease-in-out;
+}
+
 a:hover{
+    color:black;
     text-decoration:none;
 }
 
+
 li:hover{
     text-decoration: none;
+}
+
+.navbar-brand{
+    transition: transform 0.2s ease-in-out;
+}
+
+.navbar-brand:hover{
+    transform: scale3d(1.1, 1.1, 1.1);
+
 }

@@ -76,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: cart.php");
             exit;
         } catch (PDOException $e) {
-            $_SESSION['error_message'] = "Error submitting review: " . $e->getMessage();
+            // $_SESSION['error_message'] = "Error submitting review: " . $e->getMessage();
+            $_SESSION['error_message'] = "You have already reviewed this product.";
         }
     }
 }

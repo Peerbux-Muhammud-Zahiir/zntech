@@ -7,17 +7,32 @@ include('./functions/common_functions.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+define('BASE_URL3', 'http://localhost/zntech/');
 
-    define('BASE_URL1', 'http://localhost/zntech/');
+// Handle search functionality
+$search_query = '';
+$products = [];
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $search_query = trim($_GET['search']);
 
-// Fetch all products from the database
-try {
-    $query = "SELECT * FROM product"; // Replace 'products' with your table name
-    $stmt = $pdo->prepare($query);
-    $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Error fetching products: " . $e->getMessage());
+    try {
+        $query = "SELECT * FROM product WHERE product_name LIKE :search_query OR product_description LIKE :search_query";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':search_query', "%$search_query%", PDO::PARAM_STR);
+        $stmt->execute();
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error fetching products: " . $e->getMessage());
+    }
+} else {
+    try {
+        $query = "SELECT * FROM product LIMIT 6"; // Default: fetch limited products
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error fetching products: " . $e->getMessage());
+    }
 }
 ?>
 
@@ -31,28 +46,29 @@ try {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
 
 <?php include('./includes/header.php'); // Include header with navigation ?>
 
 <div class="container mt-5">
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="text-left" style="color: #007BFF;">Our Products</h1>
-    <form action="search.php" method="get">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-left" style="color: #007BFF;">Our Products</h1>
+        <form action="search.php" method="get" class="form-inline">
             <div class="input-group">
-                <input type="text" class="form-control form-control-sm" placeholder="Search..." name="search" required>
+                <input type="text" class="form-control form-control-sm" placeholder="Search..." name="search" value="<?= htmlspecialchars($search_query); ?>" required>
                 <div class="input-group-append">
                     <button class="btn btn-primary btn-sm" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
-    </form>
-</div>
+        </form>
+    </div>
+
     <div class="row">
         <?php if (!empty($products)): ?>
             <?php foreach ($products as $product): ?>
@@ -67,14 +83,12 @@ try {
                             <p class="text-success font-weight-bold">
                                 Rs <?= htmlspecialchars($product['product_price']); ?>
                             </p>
-                            <a href="<?= BASE_URL1; ?>user/add_to_cart.php?id=<?= $product['product_id']; ?>" class="btn btn-success btn-sm">
-                            <i class="fas fa-plus"></i> Add to Cart
+                            <a href="<?= BASE_URL3; ?>user/add_to_cart.php?id=<?= $product['product_id']; ?>" class="btn btn-success btn-sm">
+                                <i class="fas fa-plus"></i> Add to Cart
                             </a>
-
                             <a href="product_details.php?id=<?= $product['product_id']; ?>" class="btn btn-primary btn-sm">
-                            <i class="fas fa-info-circle"></i> View Details
+                                <i class="fas fa-info-circle"></i> View Details
                             </a>
-                         
                         </div>
                     </div>
                 </div>
@@ -82,7 +96,7 @@ try {
         <?php else: ?>
             <div class="col-12">
                 <div class="alert alert-warning text-center">
-                    No products available at the moment.
+                    No products found for "<strong><?= htmlspecialchars($search_query); ?></strong>".
                 </div>
             </div>
         <?php endif; ?>

@@ -68,7 +68,10 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
 
 <div class="container mt-5">
     <h1 class="text-center">Manage Orders</h1>
-
+   <!-- Back to Dashboard Button -->
+   <div class="float-left mb-2">
+        <a href="admin_dashboard.php" class="btn btn-secondary btn-sm"><i class="fa fa-home"></i> Dashboard</a>
+    </div>
     <!-- Show success message -->
     <?php if (isset($_SESSION['success_message'])): ?>
         <div class="alert alert-success"><?= htmlspecialchars($_SESSION['success_message']); ?></div>
@@ -103,7 +106,7 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
                                     <option value="delivered" <?= $order['order_status'] == 'delivered' ? 'selected' : ''; ?>>delivered</option>
                                 </select>
                                 <input type="hidden" name="update" value="<?= $order['order_id']; ?>">
-                                <button type="submit" class="btn btn-success btn-sm mt-2"><i class="fa fa-check"></i> Update Status</button>
+                                <button type="submit" class="btn btn-success btn-sm mt-2"><i class="fa fa-edit"></i> Update</button>
                             </form>
                         </td>
                         <td>
@@ -119,10 +122,7 @@ if (isset($_GET['update']) && is_numeric($_GET['update'])) {
         </tbody>
     </table>
 
-    <!-- Back to Dashboard Button -->
-    <div class="text-center mt-5">
-        <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fa fa-home"></i> Dashboard</a>
-    </div>
+ 
 </div>
 
 <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
