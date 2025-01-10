@@ -72,6 +72,18 @@ if ($user_id) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div id="preloader">
+    <div>
+        <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
+    </div>
+</div>
 
 <?php include('./includes/header.php'); ?>
 
@@ -190,5 +202,12 @@ if ($user_id) {
 </div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
 </html>

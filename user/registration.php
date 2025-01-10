@@ -64,7 +64,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
 </head>
 <body class="bg-light" style="background-image: url('../assets/images/bg-image.webp');">
-
+<div id="preloader">
+    <div>
+        <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
+    </div>
+</div>
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
@@ -121,6 +132,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-    <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
+    <script src="../assets/js/bootstrap.bundle.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
 </html>

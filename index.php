@@ -7,7 +7,8 @@ include('./functions/common_functions.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-define ('BASE_URL3', 'http://localhost/zntech/');
+define('BASE_URL3', 'http://localhost/zntech/');
+
 // Fetch all products from the database
 try {
     $query = "SELECT * FROM product LIMIT 6"; // Replace 'products' with your table name
@@ -35,12 +36,26 @@ try {
 </head>
 <body>
 
+<!-- Preloader -->
+<div id="preloader">
+    <div>
+        <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
+    </div>
+</div>
+
 <?php include('./includes/header.php'); // Include header with navigation ?>
 
 <div class="container mt-5">
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="text-left" style="color: #007BFF;">Our Products</h1>
-    <form action="search.php" method="get">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-left" style="color: #007BFF;">Our Products</h1>
+        <form action="search.php" method="get">
             <div class="input-group">
                 <input type="text" class="form-control form-control-sm" placeholder="Search..." name="search" required>
                 <div class="input-group-append">
@@ -49,8 +64,8 @@ try {
                     </button>
                 </div>
             </div>
-    </form>
-</div>
+        </form>
+    </div>
     <div class="row">
         <?php if (!empty($products)): ?>
             <?php foreach ($products as $product): ?>
@@ -71,7 +86,6 @@ try {
                             <a href="product_details.php?id=<?= $product['product_id']; ?>" class="btn btn-primary btn-sm">
                                 <i class="fas fa-info-circle"></i> View Details
                             </a>
-                         
                         </div>
                     </div>
                 </div>
@@ -91,6 +105,13 @@ try {
 
 <!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Preloader Script -->
+<script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
-
 </html>
