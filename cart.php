@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_cart'], $_POST
                             </td>
                             <td>Rs <?= htmlspecialchars($total); ?></td>
                             <td>
-                                <button type="submit" name="update_cart" class="btn btn-warning btn-sm">Update</button>
-                                <a href="cart.php?remove=<?= $item['id']; ?>" class="btn btn-danger btn-sm">Remove</a>
+                                <button type="submit" name="update_cart" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Update</button>
+                                <a href="cart.php?remove=<?= $item['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Remove</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_cart'], $_POST
 
             <h4 class="text-right">Grand Total: Rs <?= $grand_total; ?></h4>
             <div class="text-right">
-                <a href="<?= BASE_URL2; ?>user/checkout.php" class="btn btn-success">Place Order</a>
+                <a href="<?= BASE_URL2; ?>user/checkout.php" class="btn btn-success"><i class="fa fa-clipboard-check"></i> Place Order</a>
             </div>
         </form>
     <?php else: ?>
