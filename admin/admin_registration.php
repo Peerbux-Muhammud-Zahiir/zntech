@@ -57,9 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Admin Registration</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=F6ULPz8GgDMP&format=png&color=bf40bf">
 </head>
-<body class="bg-light">
+<body style="background-image:url('../assets/images/bg-image.webp');">
 
     <div class="container">
         <div class="row justify-content-center mt-5">
@@ -100,11 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-success btn-sm">Sign Up</button>
                             </div>
                         </form>
 
-                        <p class="text-center">Already have an account? <a href="admin_login.php">Login here</a></p>
+                        <p class="text-center">Already have an account? <a href="admin_login.php"><button class="btn btn-primary btn-sm">Login</button></a></p>
                     </div>
                 </div>
             </div>

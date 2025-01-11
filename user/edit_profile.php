@@ -66,10 +66,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Profile</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap -->
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=F6ULPz8GgDMP&format=png&color=bf40bf">
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Custom Styles -->
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
 </head>
 <body>
+        <!-- Preloader -->
+<div id="preloader">
+    <div>
+        <div class="spinner-grow text-primary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-secondary" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-danger" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-warning" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-info" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>
+        <div class="spinner-grow text-dark" role="status"><span class="sr-only">Loading...</span></div>
+    </div>
+</div>
     <?php include('../includes/header.php'); ?> <!-- Include header -->
 
     <div class="container">
@@ -113,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="text-center">
                 
                 <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Save</button>
-                <button onclick="window.location.href = 'profile.php';" class="btn btn-secondary btn-sm"><i class="fa fa-times"></i> Cancel</button>
+                <button type="button" onclick="window.location.href = 'profile.php';" class="btn btn-secondary btn-sm"><i class="fa fa-times"></i> Cancel</button>
                 </div>
             </div>
 

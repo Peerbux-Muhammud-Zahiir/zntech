@@ -60,9 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Admin Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Your custom styles -->
-    <link rel="icon" href="https://img.icons8.com/?size=100&id=SP0rgjdOWCLf&format=png&color=000000">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=F6ULPz8GgDMP&format=png&color=bf40bf">
 </head>
-<body class="bg-light">
+<body style="background-image:url('../assets/images/bg-image.webp')" >
 
     <div class="container">
         <div class="row justify-content-center mt-5">
@@ -89,13 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label for="admin_password">Password</label>
                                 <input type="password" id="admin_password" name="admin_password" class="form-control" required>
                             </div>
-                            <br>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Login</button>
                             </div>
                         </form>
 
-                        <p class="text-center">Don't have an account? <a href="admin_registration.php">Register here</a></p>
+                        <p class="text-center">Don't have an account? <a href="admin_registration.php"><button class="btn btn-success btn-sm">Sign Up</button></a></p>
                     </div>
                 </div>
             </div>

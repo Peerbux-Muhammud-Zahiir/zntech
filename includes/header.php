@@ -17,7 +17,7 @@ define('BASE_URL', 'http://localhost/zntech/');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>assets/css/styles.css">
     <link rel="icon" href="https://icons8.com/icon/F6ULPz8GgDMP/cube">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,6 +53,9 @@ define('BASE_URL', 'http://localhost/zntech/');
                     <a href="<?= BASE_URL; ?>cart.php"><i class="fa fa-shopping-cart ml-3"></i> Cart</a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="<?= BASE_URL; ?>/user/purchase_history.php"><i class="fa fa-list ml-3"></i> Purchase History</a>
+                </li>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- User is logged in -->
                     <li class="">

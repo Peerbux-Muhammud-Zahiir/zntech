@@ -42,3 +42,8 @@ li:hover{
 .spinner-grow {
     margin: 0 5px;
 }
+
+
+input[type='email']{
+    text-transform:lowercase;
+}
