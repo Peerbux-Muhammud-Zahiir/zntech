@@ -87,6 +87,7 @@ try {
         <div class="col-md-6">
             <img src="./admin/product_images/<?= htmlspecialchars($product['product_image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="img-fluid">
         </div>
+
         <div class="col-md-6">
             <h2><?= htmlspecialchars($product['product_name']); ?></h2>
             <p><strong>Price:</strong> Rs <?= htmlspecialchars($product['product_price']); ?></p>

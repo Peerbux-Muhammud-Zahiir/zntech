@@ -40,12 +40,18 @@ define('BASE_URL', 'http://localhost/zntech/');
         
         <!-- Navbar items -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <ul class="nav navbar-nav">
                 <!-- Products
                   -->
                 <li class="nav-item">
+                    <a href="<?= BASE_URL; ?>index.php">
+                        <i class="fa fa-home ml-3"></i> Home
+                        <!-- <button class="btn btn-primary"><i class="fa fa-home"></i> Home</button> -->
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= BASE_URL; ?>products.php">
-                        <i class="fa fa-box-open"></i> 
+                        <i class="fa fa-box-open ml-3"></i> 
                         Products
                         <!-- <button class="btn btn-primary"><i class="fa fa-box-open"></i> Products</button> -->
                     </a>
@@ -54,12 +60,14 @@ define('BASE_URL', 'http://localhost/zntech/');
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL; ?>/user/purchase_history.php"><i class="fa fa-list ml-3"></i> Purchase History</a>
+                    <a href="<?= BASE_URL; ?>/user/purchase_history.php"><i class="fa fa-history ml-3"></i> Purchase History</a>
                 </li>
+</ul>
+            <ul class="nav navbar-nav ml-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- User is logged in -->
                     <li class="">
-                    <a href="<?= BASE_URL; ?>user/profile.php"><i class="fa fa-user ml-3"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?></a>
+                    <a href="<?= BASE_URL; ?>user/profile.php" class="text-success"><i class="fa fa-user ml-3"></i> Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?></a>
                     </li>
                     <li class="">
                     <a href="<?= BASE_URL; ?>user/logout.php"><i class="fa fa-sign-out-alt ml-3 text-danger"></i><span class="text-danger"> Logout</span></a>
@@ -67,10 +75,10 @@ define('BASE_URL', 'http://localhost/zntech/');
                 <?php else: ?>
                     <!-- User is not logged in -->
                     <li class="">
-                        <a  href="<?= BASE_URL; ?>user/registration.php"><i class="fa fa-user-plus ml-3"></i> Register</a>
+                        <a class="text-success" href="<?= BASE_URL; ?>user/registration.php"><i class="fa fa-user-plus ml-3"></i> Sign Up</a>
                     </li>
                     <li class="">
-                        <a  href="<?= BASE_URL; ?>user/login.php"><i class="fa fa-sign-in-alt ml-3"></i> Login</a>
+                        <a class="text-primary" href="<?= BASE_URL; ?>user/login.php"><i class="fa fa-sign-in-alt ml-3"></i> Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
