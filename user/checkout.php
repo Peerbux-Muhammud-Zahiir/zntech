@@ -185,5 +185,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
 </html>

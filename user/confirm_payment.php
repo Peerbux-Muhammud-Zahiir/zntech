@@ -87,6 +87,13 @@ if(isset($_POST['confirm_payment'])){
         </div>
     </div>
     <script src="../assets/js/bootstrap.bundle.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
 
 </html>

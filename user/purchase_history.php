@@ -129,5 +129,12 @@ if (isset($_POST['clear_history'])) {
         <div class="alert alert-info text-center">You have not made any purchases yet.</div>
     <?php endif; ?>
 </div>
+<script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').style.display = 'none';
+        }, 500); // Wait for 1 second before hiding the preloader
+    });
+</script>
 </body>
 </html>

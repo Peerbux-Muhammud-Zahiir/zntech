@@ -67,10 +67,10 @@ define('BASE_URL', 'http://localhost/zntech/');
                 <?php else: ?>
                     <!-- User is not logged in -->
                     <li class="">
-                        <a  href="./user/registration.php"><i class="fa fa-user-plus ml-3"></i> Register</a>
+                        <a  href="<?= BASE_URL; ?>user/registration.php"><i class="fa fa-user-plus ml-3"></i> Register</a>
                     </li>
                     <li class="">
-                        <a  href="./user/login.php"><i class="fa fa-sign-in-alt ml-3"></i> Login</a>
+                        <a  href="<?= BASE_URL; ?>user/login.php"><i class="fa fa-sign-in-alt ml-3"></i> Login</a>
                     </li>
                 <?php endif; ?>
             </ul>
